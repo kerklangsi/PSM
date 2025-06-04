@@ -26,7 +26,7 @@ async function fetchSupabaseTempHumiData() {
   if (error) return [];
 
   return data.map(row => ({
-    time: new Date(row.local_time).getTime(),
+    time: new Date(new Date(row.created_at).getTime() + 8 * 60 * 60 * 1000).getTime(),
     temp: row.temperature,
     humi: row.humidity
   }));
