@@ -24,7 +24,7 @@ async function fetchSupabaseTempHumiData() {
     .order('created_at', { ascending: true });
 
   if (error) return [];
-  
+
   return data.filter(row => {
     const adjusted = new Date(row.created_at).getTime() + 8 * 60 * 60 * 1000;
     return adjusted >= fromTime;
