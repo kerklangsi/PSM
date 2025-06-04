@@ -26,7 +26,7 @@ async function fetchSupabaseMQ4Data() {
   if (error) return [];
 
   return data.map(row => ({
-    time: new Date(row.created_at).getTime(),
+    time: new Date(new Date(row.created_at).getTime() + 8 * 60 * 60 * 1000).getTime(),
     value: row.mq4PPM
   }));
 }
@@ -53,7 +53,7 @@ function aggregateData(data, interval) {
 }
 
 function updateMQ4Chart() {
-  const now = (allDataMQ4.at(-1)?.time || Date.now()) + 8 * 60 * 60 * 1000;
+  const now = Date.now() + 8 * 60 * 60 * 1000;
   const duration = timeRanges[timeRangeMQ4];
   const interval = intervalMap[timeRangeMQ4];
   const fromTime = now - duration;
