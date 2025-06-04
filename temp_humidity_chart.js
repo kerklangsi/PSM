@@ -26,7 +26,7 @@ async function fetchSupabaseTempHumiData() {
   if (error) return [];
 
   return data.map(row => ({
-    time: new Date(row.created_at).getTime(),
+    time: new Date(new Date(row.created_at).getTime() + 8 * 60 * 60 * 1000).getTime(),
     temp: row.temperature,
     humi: row.humidity
   }));
@@ -54,7 +54,7 @@ function aggregateData(data, interval) {
 }
 
 function updateTempHumiChart() {
-  const now = (allDataTempHumi.at(-1)?.time || Date.now()) + 8 * 60 * 60 * 1000;
+  const now = Date.now() + 8 * 60 * 60 * 1000;
   const duration = timeRanges[timeRangeTempHumi];
   const interval = intervalMap[timeRangeTempHumi];
   const fromTime = now - duration;
