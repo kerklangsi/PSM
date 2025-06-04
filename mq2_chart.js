@@ -62,7 +62,7 @@ function updateMQ2Chart() {
   const fromTime = now - duration;
 
   const filtered = allDataMQ2.filter(p => timeRangeMQ2 === 'max' || (p.time >= fromTime && p.time <= now));
-  const points = ['max'].includes(timeRangeMQ2) ? filtered.map(p => [p.time, p.value]) : aggregateData(filtered, interval);
+  const points = ['1m','max'].includes(timeRangeMQ2) ? filtered.map(p => [p.time, p.value]) : aggregateData(filtered, interval);
 
   Highcharts.chart('mq2Chart', {
     chart: { type: 'spline', reflow: true, spacingRight: 10 },
