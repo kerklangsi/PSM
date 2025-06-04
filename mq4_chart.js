@@ -80,7 +80,7 @@ document.getElementById('timeRangeMQ4').addEventListener('change', e => {
 setInterval(async () => {
   allDataMQ4 = await fetchSupabaseMQ4Data();
   updateMQ4Chart();
-}, 10000);
+}, 5000);
 
 fetchSupabaseMQ4Data().then(data => {
   allDataMQ4 = data;
