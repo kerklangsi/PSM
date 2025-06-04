@@ -24,8 +24,15 @@ async function fetchSupabaseTempHumiData() {
     .order('created_at', { ascending: true });
 
   if (error) return [];
-
-  return data.map(row => ({
+  const filtered = allData.filter(row => {
+    const adjustedTime = new Date(row.created_at).getTime() + (8 * 60 * 60 * 1000);
+    return adjustedTime >= fromTime;
+  });
+  
+  return data.filter(row => {
+    const adjusted = new Date(row.created_at).getTime() + 8 * 60 * 60 * 1000;
+    return adjusted >= fromTime;
+  }).map(row => ({
     time: new Date(new Date(row.created_at).getTime() + 8 * 60 * 60 * 1000).getTime(),
     temp: row.temperature,
     humi: row.humidity
