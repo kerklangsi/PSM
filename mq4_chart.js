@@ -59,7 +59,7 @@ function updateMQ4Chart() {
   const fromTime = now - duration;
 
   const filtered = allDataMQ4.filter(p => timeRangeMQ4 === 'max' || (p.time >= fromTime && p.time <= now));
-  const points = ['1m','10m','30m','max'].includes(timeRangeMQ4) ? filtered.map(p => [p.time, p.value]) : aggregateData(filtered, interval);
+  const points = ['1m','max'].includes(timeRangeMQ4) ? filtered.map(p => [p.time, p.value]) : aggregateData(filtered, interval);
 
   Highcharts.chart('mq4Chart', {
     chart: { type: 'spline', reflow: true, spacingRight: 10 },
