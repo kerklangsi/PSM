@@ -54,7 +54,7 @@ function aggregateData(data, interval) {
 }
 
 function updateTempHumiChart() {
-  const now = allDataTempHumi.at(-1)?.time || Date.now();
+  const now = (allDataTempHumi.at(-1)?.time || Date.now()) + 8 * 60 * 60 * 1000;
   const duration = timeRanges[timeRangeTempHumi];
   const interval = intervalMap[timeRangeTempHumi];
   const fromTime = now - duration;
