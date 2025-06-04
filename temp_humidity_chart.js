@@ -26,8 +26,7 @@ async function fetchSupabaseTempHumiData() {
   if (error) return [];
 
   return data.map(row => ({
-    time: new Date(row.created_at).getTime(),
-    //time: new Date(new Date(row.created_at).getTime() + 8 * 60 * 60 * 1000).getTime(),
+    time: new Date(new Date(row.created_at).getTime() + 8 * 60 * 60 * 1000).getTime(),
     temp: row.temperature,
     humi: row.humidity
   }));
@@ -55,8 +54,7 @@ function aggregateData(data, interval) {
 }
 
 function updateTempHumiChart() {
-  const now = Date.now();
-  //const now = Date.now() + 8 * 60 * 60 * 1000;
+  const now = Date.now() + 8 * 60 * 60 * 1000;
   const duration = timeRanges[timeRangeTempHumi];
   const interval = intervalMap[timeRangeTempHumi];
   const fromTime = now - duration;
@@ -68,9 +66,10 @@ function updateTempHumiChart() {
     tempPoints = filtered.map(p => [p.time, p.temp]);
     humiPoints = filtered.map(p => [p.time, p.humi]);
   } else {
-    const agg = aggregateData(filtered, interval);
-    tempPoints = agg.temp;
-    humiPoints = agg.humi;
+    const tempAgg = aggregateData(filtered.map(p => ({ time: p.time, value: p.temp })), interval);
+    const humiAgg = aggregateData(filtered.map(p => ({ time: p.time, value: p.humi })), interval);
+    tempPoints = tempAgg;
+    humiPoints = humiAgg;
   }
 
   Highcharts.chart('tempHumiChart', {
