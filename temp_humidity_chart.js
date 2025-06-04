@@ -62,7 +62,7 @@ function updateTempHumiChart() {
   const filtered = allDataTempHumi.filter(p => timeRangeTempHumi === 'max' || (p.time >= fromTime && p.time <= now));
 
   let tempPoints, humiPoints;
-  if (['1m','10m','30m','max'].includes(timeRangeTempHumi)) {
+  if (['1m','max'].includes(timeRangeTempHumi)) {
     tempPoints = filtered.map(p => [p.time, p.temp]);
     humiPoints = filtered.map(p => [p.time, p.humi]);
   } else {
