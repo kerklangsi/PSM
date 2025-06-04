@@ -62,7 +62,7 @@ function updateMQ6Chart() {
   const fromTime = now - duration;
 
   const filtered = allDataMQ6.filter(p => timeRangeMQ6 === 'max' || (p.time >= fromTime && p.time <= now));
-  const points = ['1m','10m','30m','max'].includes(timeRangeMQ6) ? filtered.map(p => [p.time, p.value]) : aggregateData(filtered, interval);
+  const points = ['1m','max'].includes(timeRangeMQ6) ? filtered.map(p => [p.time, p.value]) : aggregateData(filtered, interval);
 
   Highcharts.chart('mq6Chart', {
     chart: { type: 'spline', reflow: true, spacingRight: 10 },
