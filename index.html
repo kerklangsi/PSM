@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ESP32PSM Web Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+</head>
+<body>
+  <h1>DEVELOPMENT OF AN IOT-BASED EARLY GAS DETECTION SYSTEM BY USING MICROCONTROLLER</h1>
+
+  <!-- Container 1: Gas Type -->
+  <div class="container" id="container1">
+    <div class="card" id="gasTypeCard"></div>
+  </div>
+
+  <!-- Container 2: Gauges -->
+  <div class="container" id="container2">
+    <div class="card" id="mq2Card"></div>
+    <div class="card" id="mq4Card"></div>
+    <div class="card" id="mq6Card"></div>
+    <div class="card" id="temperatureCard"></div>
+    <div class="card" id="humidityCard"></div>
+    <div class="card" id="vibrationCard"></div>
+  </div>
+
+ <!-- Container 3: Charts -->
+  <div class="container" id="container3">
+    <div class="card chart-card">
+      <div id="mq2Chart" style="width: 100%;"></div>
+        <div class="controls">
+          <select id="timeRangeMQ2" style="width: 100%; height: 100%;"></div>
+          	<option value="1m">Past 1 minutes</option>
+          	<option value="10m">Past 10 minutes</option>
+          	<option value="30m">Past 30 minutes</option>
+          	<option value="1h">Past 1 hour</option>
+          	<option value="6h">Past 6 hours</option>
+          	<option value="12h">Past 12 hours</option>
+          	<option value="1d">Past 1 day</option>
+          	<option value="1w">Past 1 week</option>
+          	<option value="2w">Past 2 weeks</option>
+    	      <option value="1mo">Past 1 month</option>
+            <option value="max">max</option>
+          </select>
+      </div>
+    </div>
+
+    <div class="card chart-card">
+      <div id="mq4Chart" style="width: 100%; height: 100%;"></div>
+        <div class="controls">
+          <select id="timeRangeMQ4">
+          	<option value="1m">Past 1 minutes</option>
+          	<option value="10m">Past 10 minutes</option>
+          	<option value="30m">Past 30 minutes</option>
+          	<option value="1h">Past 1 hour</option>
+          	<option value="6h">Past 6 hours</option>
+          	<option value="12h">Past 12 hours</option>
+          	<option value="1d">Past 1 day</option>
+          	<option value="1w">Past 1 week</option>
+          	<option value="2w">Past 2 weeks</option>
+    	      <option value="1mo">Past 1 month</option>
+            <option value="max">max</option>
+          </select>
+      </div>
+    </div>
+
+    <div class="card chart-card">
+      <div id="mq6Chart" style="width: 100%; height: 100%;"></div>
+        <div class="controls">
+          <select id="timeRangeMQ6">
+          	<option value="1m">Past 1 minutes</option>
+          	<option value="10m">Past 10 minutes</option>
+          	<option value="30m">Past 30 minutes</option>
+          	<option value="1h">Past 1 hour</option>
+          	<option value="6h">Past 6 hours</option>
+          	<option value="12h">Past 12 hours</option>
+          	<option value="1d">Past 1 day</option>
+          	<option value="1w">Past 1 week</option>
+          	<option value="2w">Past 2 weeks</option>
+    	      <option value="1mo">Past 1 month</option>
+            <option value="max">max</option>
+          </select>
+      </div>
+    </div>
+
+    <div class="card chart-card">
+      <div id="tempHumiChart" style="width: 100%; height: 100%;"></div>
+        <div class="controls">
+          <select id="timeRangeTempHumi">
+          	<option value="1m">Past 1 minutes</option>
+          	<option value="10m">Past 10 minutes</option>
+          	<option value="30m">Past 30 minutes</option>
+          	<option value="1h">Past 1 hour</option>
+          	<option value="6h">Past 6 hours</option>
+          	<option value="12h">Past 12 hours</option>
+          	<option value="1d">Past 1 day</option>
+          	<option value="1w">Past 1 week</option>
+          	<option value="2w">Past 2 weeks</option>
+    	      <option value="1mo">Past 1 month</option>
+            <option value="max">max</option>
+          </select>
+      </div>
+    </div>
+</div>
+
+  <!-- Container 4: Location -->
+  <div class="container" id="container4">
+    <div class="card" id="locationCard"></div>
+  </div>
+
+  <!-- Script Imports -->
+  <script type="module" src="data_collector.js"></script>
+  <script type="module" src="firebase-init.js"></script>
+  <script type="module" src="temperature_gauge.js"></script>
+  <script type="module" src="humidity_gauge.js"></script>
+  <script type="module" src="mq2_gauge.js"></script>
+  <script type="module" src="mq4_gauge.js"></script>
+  <script type="module" src="mq6_gauge.js"></script>
+  <script type="module" src="vibration.js"></script>
+  <script type="module" src="gas_type.js"></script>
+  <script type="module" src="location.js"></script>
+  <script type="module" src="mq2_chart.js"></script>
+  <script type="module" src="mq4_chart.js"></script>
+  <script type="module" src="mq6_chart.js"></script>
+  <script type="module" src="temp_humidity_chart.js"></script>
+</body>
+  </html>
+    BERU3764 BACHELOR DEGREE PROJECT I & II, DEVELOPMENT OF AN IOT-BASED EARLY GAS DETECTION SYSTEM BY USING MICROCONTROLLER</h1>
+    <p>Copyright © 2025 Universiti Teknikal Malaysia Melaka. All rights reserved.</p>
+  </body>
+</html>
