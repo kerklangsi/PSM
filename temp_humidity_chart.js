@@ -94,7 +94,7 @@ document.getElementById('timeRangeTempHumi').addEventListener('change', e => {
 setInterval(async () => {
   allDataTempHumi = await fetchSupabaseTempHumiData();
   updateTempHumiChart();
-}, 5000);
+}, 10000);
 
 fetchSupabaseTempHumiData().then(data => {
   allDataTempHumi = data;
