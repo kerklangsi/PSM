@@ -84,7 +84,7 @@ setInterval(async () => {
   const data = await fetchSupabaseMQ2Data();
   allDataMQ2 = data;
   updateMQ2Chart();
-}, 5000);
+}, 10000);
 
 fetchSupabaseMQ2Data().then(data => {
   allDataMQ2 = data;
