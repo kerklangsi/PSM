@@ -56,7 +56,7 @@ function aggregateData(data, interval) {
 }
 
 function updateMQ6Chart() {
-  const now = allDataMQ6.at(-1)?.time || Date.now();
+  const now = (allDataMQ6.at(-1)?.time || Date.now()) + 8 * 60 * 60 * 1000;
   const duration = timeRanges[timeRangeMQ6];
   const interval = intervalMap[timeRangeMQ6];
   const fromTime = now - duration;
