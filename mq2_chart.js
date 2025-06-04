@@ -29,7 +29,7 @@ async function fetchSupabaseMQ2Data() {
   }
 
   return data.map(row => ({
-    time: new Date(new Date(row.created_at).getTime() + 8 * 60 * 60 * 1000).getTime()
+    time: new Date(new Date(row.created_at).getTime() + 8 * 60 * 60 * 1000).getTime(),
     value: row.mq2PPM
   }));
 }
