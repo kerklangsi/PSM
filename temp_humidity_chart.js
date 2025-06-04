@@ -74,7 +74,7 @@ function updateTempHumiChart() {
   Highcharts.chart('tempHumiChart', {
     chart: { type: 'spline', reflow: true, spacingRight: 10 },
     title: { text: 'Temperature & Humidity Sensor Data' },
-    xAxis: { type: 'datetime', title: { text: 'Time' }, min: timeRangeMQ2 === 'max' ? null : fromTime, max: timeRangeMQ2 === 'max' ? null : now },
+    xAxis: { type: 'datetime', title: { text: 'Time' }, min: timeRangeTempHumi === 'max' ? null : fromTime, max: timeRangeTempHumi === 'max' ? null : now },
     yAxis: { title: { text: 'Values' }, min: 0 },
     tooltip: { xDateFormat: '%Y-%m-%d %H:%M:%S' },
     legend: { layout: 'vertical', align: 'right', verticalAlign: 'top', floating: true, borderWidth: 1, backgroundColor: '#FFFFFF' },
