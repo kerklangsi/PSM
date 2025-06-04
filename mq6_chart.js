@@ -29,7 +29,7 @@ async function fetchSupabaseMQ6Data() {
   }
 
   return data.map(row => ({
-    time: new Date(row.created_at).getTime(),
+    time: new Date(new Date(row.created_at).getTime() + 8 * 60 * 60 * 1000).getTime(),
     value: row.mq6PPM
   }));
 }
@@ -56,7 +56,7 @@ function aggregateData(data, interval) {
 }
 
 function updateMQ6Chart() {
-  const now = (allDataMQ6.at(-1)?.time || Date.now()) + 8 * 60 * 60 * 1000;
+  const now = Date.now() + 8 * 60 * 60 * 1000;
   const duration = timeRanges[timeRangeMQ6];
   const interval = intervalMap[timeRangeMQ6];
   const fromTime = now - duration;
