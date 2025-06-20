@@ -68,7 +68,7 @@ function updateMQ6Chart() {
     chart: { type: 'spline', reflow: true, spacingRight: 10 },
     title: { text: 'MQ6 PPM Sensor Data' },
     xAxis: { type: 'datetime', title: { text: 'Time' }, min: timeRangeMQ6 === 'max' ? null : fromTime, max: timeRangeMQ6 === 'max' ? null : now },
-    yAxis: { title: { text: 'PPM' }, min: 0, max: 1000 },
+    yAxis: { title: { text: 'PPM' }, min: 0, max: 10000 },
     tooltip: { xDateFormat: '%Y-%m-%d %H:%M:%S', valueSuffix: ' PPM' },
     legend: { layout: 'vertical', align: 'right', verticalAlign: 'top', floating: true, borderWidth: 1, backgroundColor: '#FFFFFF' },
     series: [{ name: 'MQ6 PPM', data: points, color: '#28a745' }]
