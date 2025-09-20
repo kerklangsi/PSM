@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ESP32PSM Web Dashboard</title>
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/chart.js" as="script">
+  <link rel="preload" href="https://code.highcharts.com/highcharts.js" as="script">
+  
+  <!-- Load libraries -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
@@ -14,119 +20,132 @@
 
   <!-- Container 1: Gas Type -->
   <div class="container" id="container1">
-    <div class="card" id="gasTypeCard"></div>
+    <div class="card" id="gasTypeCard">
+      <div class="loading-placeholder">Loading gas type...</div>
+    </div>
   </div>
 
   <!-- Container 2: Gauges -->
   <div class="container" id="container2">
-    <div class="card" id="mq2Card"></div>
-    <div class="card" id="mq4Card"></div>
-    <div class="card" id="mq6Card"></div>
-    <div class="card" id="temperatureCard"></div>
-    <div class="card" id="humidityCard"></div>
-    <div class="card" id="vibrationCard"></div>
+    <div class="card" id="mq2Card">
+      <div class="loading-placeholder">Loading MQ2...</div>
+    </div>
+    <div class="card" id="mq4Card">
+      <div class="loading-placeholder">Loading MQ4...</div>
+    </div>
+    <div class="card" id="mq6Card">
+      <div class="loading-placeholder">Loading MQ6...</div>
+    </div>
+    <div class="card" id="temperatureCard">
+      <div class="loading-placeholder">Loading temperature...</div>
+    </div>
+    <div class="card" id="humidityCard">
+      <div class="loading-placeholder">Loading humidity...</div>
+    </div>
+    <div class="card" id="vibrationCard">
+      <div class="loading-placeholder">Loading vibration...</div>
+    </div>
   </div>
 
- <!-- Container 3: Charts -->
+  <!-- Container 3: Charts -->
   <div class="container" id="container3">
     <div class="card chart-card">
-      <div id="mq2Chart"></div>
-        <div class="controls">
-          <select id="timeRangeMQ2">
-            <option value="1m">Past 1 minutes</option>
-            <option value="10m">Past 10 minutes</option>
-            <option value="30m">Past 30 minutes</option>
-            <option value="1h">Past 1 hour</option>
-            <option value="6h">Past 6 hours</option>
-            <option value="12h">Past 12 hours</option>
-            <option value="1d">Past 1 day</option>
-            <option value="1w">Past 1 week</option>
-            <option value="2w">Past 2 weeks</option>
-            <option value="1mo">Past 1 month</option>
-            <option value="max">max</option>
-          </select>
+      <div id="mq2Chart" class="chart-container">
+        <div class="loading-placeholder">Loading MQ2 chart...</div>
+      </div>
+      <div class="controls">
+        <select id="timeRangeMQ2">
+          <option value="1m">Past 1 minute</option>
+          <option value="10m">Past 10 minutes</option>
+          <option value="30m">Past 30 minutes</option>
+          <option value="1h">Past 1 hour</option>
+          <option value="6h">Past 6 hours</option>
+          <option value="12h">Past 12 hours</option>
+          <option value="1d">Past 1 day</option>
+          <option value="1w">Past 1 week</option>
+          <option value="2w">Past 2 weeks</option>
+          <option value="1mo">Past 1 month</option>
+          <option value="max">All data</option>
+        </select>
       </div>
     </div>
 
     <div class="card chart-card">
-      <div id="mq4Chart"></div>
-        <div class="controls">
-          <select id="timeRangeMQ4">
-          	<option value="1m">Past 1 minutes</option>
-          	<option value="10m">Past 10 minutes</option>
-          	<option value="30m">Past 30 minutes</option>
-          	<option value="1h">Past 1 hour</option>
-          	<option value="6h">Past 6 hours</option>
-          	<option value="12h">Past 12 hours</option>
-          	<option value="1d">Past 1 day</option>
-          	<option value="1w">Past 1 week</option>
-          	<option value="2w">Past 2 weeks</option>
-    	      <option value="1mo">Past 1 month</option>
-            <option value="max">max</option>
-          </select>
+      <div id="mq4Chart" class="chart-container">
+        <div class="loading-placeholder">Loading MQ4 chart...</div>
+      </div>
+      <div class="controls">
+        <select id="timeRangeMQ4">
+          <option value="1m">Past 1 minute</option>
+          <option value="10m">Past 10 minutes</option>
+          <option value="30m">Past 30 minutes</option>
+          <option value="1h">Past 1 hour</option>
+          <option value="6h">Past 6 hours</option>
+          <option value="12h">Past 12 hours</option>
+          <option value="1d">Past 1 day</option>
+          <option value="1w">Past 1 week</option>
+          <option value="2w">Past 2 weeks</option>
+          <option value="1mo">Past 1 month</option>
+          <option value="max">All data</option>
+        </select>
       </div>
     </div>
 
     <div class="card chart-card">
-      <div id="mq6Chart"></div>
-        <div class="controls">
-          <select id="timeRangeMQ6">
-          	<option value="1m">Past 1 minutes</option>
-          	<option value="10m">Past 10 minutes</option>
-          	<option value="30m">Past 30 minutes</option>
-          	<option value="1h">Past 1 hour</option>
-          	<option value="6h">Past 6 hours</option>
-          	<option value="12h">Past 12 hours</option>
-          	<option value="1d">Past 1 day</option>
-          	<option value="1w">Past 1 week</option>
-          	<option value="2w">Past 2 weeks</option>
-    	      <option value="1mo">Past 1 month</option>
-            <option value="max">max</option>
-          </select>
+      <div id="mq6Chart" class="chart-container">
+        <div class="loading-placeholder">Loading MQ6 chart...</div>
+      </div>
+      <div class="controls">
+        <select id="timeRangeMQ6">
+          <option value="1m">Past 1 minute</option>
+          <option value="10m">Past 10 minutes</option>
+          <option value="30m">Past 30 minutes</option>
+          <option value="1h">Past 1 hour</option>
+          <option value="6h">Past 6 hours</option>
+          <option value="12h">Past 12 hours</option>
+          <option value="1d">Past 1 day</option>
+          <option value="1w">Past 1 week</option>
+          <option value="2w">Past 2 weeks</option>
+          <option value="1mo">Past 1 month</option>
+          <option value="max">All data</option>
+        </select>
       </div>
     </div>
 
     <div class="card chart-card">
-      <div id="tempHumiChart"></div>
-        <div class="controls">
-          <select id="timeRangeTempHumi">
-          	<option value="1m">Past 1 minutes</option>
-          	<option value="10m">Past 10 minutes</option>
-          	<option value="30m">Past 30 minutes</option>
-          	<option value="1h">Past 1 hour</option>
-          	<option value="6h">Past 6 hours</option>
-          	<option value="12h">Past 12 hours</option>
-          	<option value="1d">Past 1 day</option>
-          	<option value="1w">Past 1 week</option>
-          	<option value="2w">Past 2 weeks</option>
-    	      <option value="1mo">Past 1 month</option>
-            <option value="max">max</option>
-          </select>
+      <div id="tempHumiChart" class="chart-container">
+        <div class="loading-placeholder">Loading temperature & humidity chart...</div>
+      </div>
+      <div class="controls">
+        <select id="timeRangeTempHumi">
+          <option value="1m">Past 1 minute</option>
+          <option value="10m">Past 10 minutes</option>
+          <option value="30m">Past 30 minutes</option>
+          <option value="1h">Past 1 hour</option>
+          <option value="6h">Past 6 hours</option>
+          <option value="12h">Past 12 hours</option>
+          <option value="1d">Past 1 day</option>
+          <option value="1w">Past 1 week</option>
+          <option value="2w">Past 2 weeks</option>
+          <option value="1mo">Past 1 month</option>
+          <option value="max">All data</option>
+        </select>
       </div>
     </div>
-</div>
+  </div>
 
   <!-- Container 4: Location -->
   <div class="container" id="container4">
-    <div class="card" id="locationCard"></div>
+    <div class="card" id="locationCard">
+      <div class="loading-placeholder">Loading location...</div>
+    </div>
   </div>
 
-  <!-- Script Imports -->
-  <script type="module" src="firebase-init.js"></script>
-  <script type="module" src="temperature_gauge.js"></script>
-  <script type="module" src="humidity_gauge.js"></script>
-  <script type="module" src="mq2_gauge.js"></script>
-  <script type="module" src="mq4_gauge.js"></script>
-  <script type="module" src="mq6_gauge.js"></script>
-  <script type="module" src="vibration.js"></script>
-  <script type="module" src="gas_type.js"></script>
-  <script type="module" src="location.js"></script>
-  <script type="module" src="mq2_chart.js"></script>
-  <script type="module" src="mq4_chart.js"></script>
-  <script type="module" src="mq6_chart.js"></script>
-  <script type="module" src="temp_humidity_chart.js"></script>
+  <!-- Main Application Script -->
+  <script type="module" src="src/main.js"></script>
+
   <footer>
-    <p>BERU3764 BACHELOR DEGREE PROJECT I &amp; II, DEVELOPMENT OF AN IOT-BASED EARLY GAS DETECTION SYSTEM BY USING MICROCONTROLLER</p>
+    <p>BERU3764 BACHELOR DEGREE PROJECT I & II, DEVELOPMENT OF AN IOT-BASED EARLY GAS DETECTION SYSTEM BY USING MICROCONTROLLER</p>
     <p>Copyright © 2025 Universiti Teknikal Malaysia Melaka. All rights reserved.</p>
   </footer>
 </body>
