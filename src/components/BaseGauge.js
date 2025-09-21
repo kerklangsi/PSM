@@ -26,10 +26,10 @@ export class BaseGauge {
         <canvas id="${this.containerId}Canvas" style="width: 100%; height: auto;"></canvas>
         <div id="${this.containerId}Center"
              style="position: absolute; top: 65%; left: 50%; transform: translate(-50%, -50%);
-                    font-size: 250%; font-weight: bold; color: #444;">--</div>
-        <div style="position: absolute; left: 0; bottom: 10%; font-size: 150%;">0${this.unit}</div>
-        <div style="position: absolute; right: 0; bottom: 10%; font-size: 150%;">${this.maxValue}${this.unit}</div>
-        ${this.unit === 'PPM' ? '<div style="position: absolute; right: 40%; bottom: 0; font-weight: bold; font-size: 200%;">PPM</div>' : ''}
+                    font-size: 150%; font-weight: bold; color: #ffffffff;">--</div>
+        <div style="position: absolute; left: 0; font-size: 150%;">0</div>
+        <div style="position: absolute; right: 0; font-size: 150%;">${this.maxValue}</div>
+        ${this.unit === 'PPM' ? '<div style="position: absolute; right: 40%;bottom: 5%;font-weight: bold; font-size: 150%;">PPM</div>' : ''}
       </div>
     `;
   }
@@ -51,7 +51,7 @@ export class BaseGauge {
         responsive: true,
         maintainAspectRatio: true,
         aspectRatio: 1,
-        cutout: "70%",
+        cutout: "65%",
         rotation: -90,
         circumference: 180,
         plugins: {

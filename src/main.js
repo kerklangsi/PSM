@@ -62,8 +62,8 @@ class DashboardManager {
 
   initializeGauges() {
     // Create gauge instances
-    this.gauges.mq2 = new BaseGauge('mq2Card', 'MQ-2', 'PPM', 1000, '#ff6f61');
-    this.gauges.mq4 = new BaseGauge('mq4Card', 'MQ-4', 'PPM', 1000, '#ff6f61');
+    this.gauges.mq2 = new BaseGauge('mq2Card', 'MQ-2', 'PPM', 1000, '#82e403ff');
+    this.gauges.mq4 = new BaseGauge('mq4Card', 'MQ-4', 'PPM', 1000, '#7b0ac7ff');
     this.gauges.mq6 = new BaseGauge('mq6Card', 'MQ-6', 'PPM', 1000, '#ff6f61');
     this.gauges.temperature = new BaseGauge('temperatureCard', 'Temperature', '°C', 100, '#36a2eb');
     this.gauges.humidity = new BaseGauge('humidityCard', 'Humidity', '%', 100, '#36a2eb');
